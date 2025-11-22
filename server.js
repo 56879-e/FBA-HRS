@@ -7,9 +7,9 @@ const DATA_DIR = path.join(__dirname, 'data');
 const DB_FILE = path.join(DATA_DIR, 'database.json');
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 4000;
 
-// كلمات المرور الافتراضية
-const ADMIN_PASSWORD = 'admin123';
-const USER_PASSWORD = 'user123';
+// كلمات المرور: استخدم متغيرات البيئة إن وُجدت (يسهل التشغيل على GitHub/الخادم)
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
+const USER_PASSWORD = process.env.USER_PASSWORD || 'user123';
 
 if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
 if (!fs.existsSync(DB_FILE)) {
@@ -131,7 +131,7 @@ function startServer(port, attemptsLeft = MAX_PORT_TRIES) {
     console.log('Server running on http://localhost:' + port);
     console.log('Accessible on 0.0.0.0:' + port);
     console.log('Use environment variable PORT to override (e.g. PORT=5000)');
-    console.log('Default admin password:', ADMIN_PASSWORD, 'user password:', USER_PASSWORD);
+    console.log('Authentication uses environment variables ADMIN_PASSWORD and USER_PASSWORD (or defaults).');
   });
   server.on('error', (err) => {
     if (err && err.code === 'EADDRINUSE' && attemptsLeft > 0) {
