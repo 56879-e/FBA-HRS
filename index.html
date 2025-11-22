@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>نظام الموارد البشرية</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="login-screen" class="center">
+    <div class="card">
+      <img src="" alt="شعار النظام" id="logo" style="width:80px;height:80px;background:#ccc;border-radius:8px;margin:auto;display:block"/>
+      <h1 id="system-name">نظام إدارة الموارد البشرية</h1>
+      <label>الدور</label>
+      <select id="role">
+        <option value="admin">الادمن</option>
+        <option value="user">المستخدم</option>
+      </select>
+      <label>كلمة المرور</label>
+      <input id="password" type="password" />
+      <button id="loginBtn">تسجيل الدخول</button>
+      <p id="loginMsg" class="muted"></p>
+      <p class="muted small">كلمات المرور الافتراضية: admin: admin123 ، user: user123</p>
+    </div>
+  </div>
+
+  <div id="app" style="display:none">
+    <header>
+      <div class="brand">
+        <div class="logo">شعار</div>
+        <div>
+          <div class="org-name">المنظومه </div>
+          <div class="sys-name">نظام الموارد البشرية</div>
+        </div>
+      </div>
+    </header>
+    <div class="layout">
+      <aside>
+        <ul id="menu">
+          <!-- أقسام تُحمّل من الخادم -->
+        </ul>
+      </aside>
+      <main>
+        <div id="toolbar">
+          <button id="addProjectBtn" style="display:none">اضافه داتا جديده</button>
+          <span id="currentCategory" class="muted"></span>
+        </div>
+        <div id="projects"></div>
+        <div id="recordsArea"></div>
+      </main>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
